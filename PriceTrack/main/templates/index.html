@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PriceAlert</title>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'main/logo.jpg' %}" alt="Logo" height="50">
+        </div>
+        <div class="heading">
+            <h1>Price Tracker</h1>
+        </div>
+        <div class="login">
+            <a href="{% url 'login' %}" class="login-btn">Sign in</a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Track Amazon Prices with Ease</h1>
+            <p>Set your desired price and get notified when Amazon products drop below it.</p>
+            <button class="cta"><a href="#submit-product" style="color:white; text-decoration:none;">Get Notified</a></button>
+        </section>
+        <section class="features">
+            <h2>Receive Price Drop Alerts</h2>
+            <p>Set your desired price and get notified when Amazon products drop below it.</p>
+        </section>
+    </main>
+    <section id="submit-product" class="submit-product">
+        <h2>Submit Your Product</h2>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.product_link.label_tag }}
+                {{ form.product_link }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                {{ form.desired_price.label_tag }}
+                {{ form.desired_price }}
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </section>
+    <footer>
+        <ul>
+            <li>Money-back Guarantee</li>
+            <li>Try Premium Plans for Free</li>
+            <li>Secure Payments</li>
+            <li>Fully-Featured Editor</li>
+            <li>Customer Support</li>
+        </ul>
+    </footer>
+</body>
+</html>
